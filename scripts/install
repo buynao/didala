@@ -1,0 +1,13 @@
+#!/usr/bin/env sh
+console.log(111)
+NODE=$(node -v | grep "v7.")
+
+if [ -z "$NODE" ]; then
+    echo 'This application is unfortunately not optimised for node versions greater than 10.x'
+    echo 'PRs are welcome!'
+    exit 1;
+else
+    echo "installing node modules.."
+fi
+
+npm i && cd ./dida-client && npm i && cd ../dida-server && npm i

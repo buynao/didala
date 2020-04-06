@@ -1,0 +1,239 @@
+.task-list-view {
+    position: absolute;
+    top: 0;
+    left: 260px;
+    right: 36%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.tl-bar {
+    padding: 24px 24px 20px 28px;
+}
+.line-left, .line-right {
+    position: relative;
+}
+/* AddTask */
+.add-task {
+    position: relative;
+    margin: 0 28px 20px;
+    .task-input {
+        width: 100%;
+        height: 40px;
+        padding-left: 12px;
+        padding-right: 74px;
+        border: 1px solid;
+        outline: 0;
+        border-radius: 4px;
+        font-size: 14px;
+        border-color: transparent;
+        font-size: 14px;
+        overflow: hidden;
+        background-color: hsla(240,1%,45%,.08);
+    }
+    
+    .task-input:focus {
+        border-color: rgba(105,112,132,.36);
+    }
+    .tl-bar .tl-des {
+        line-height: 25px;
+        height: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    .text-primary {
+        color: rgba(0,0,0,.85);
+    }
+}
+/* TaskList */
+.tasks-list {
+    overflow-y: auto;
+}
+.task-list  {
+    position: relative;
+    flex: 1;
+    overflow: hidden;
+    .antiscroll-wrap{
+        position: absolute;
+        width: 100%!important;
+        height: 100%;
+        overflow: hidden;
+    }
+    .task-list-scroll {
+        overflow: auto;
+        width: 100%;
+        height: 100%;
+        -ms-overflow-style: none;
+    }
+    .task-list-content{
+        position: relative;
+    }
+    .section-header {
+        height: 36px;
+        line-height: 36px;
+        cursor: pointer;
+        overflow: hidden;
+        position: relative;
+        padding: 0 28px 0 26px;
+    }
+    .section-title {
+        display: inline-block;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        max-width: 90%;
+        font-weight: 700;
+        color: rgba(0,0,0,.36);
+        font-size: 12px;
+    }
+}
+
+/* TaskItem */
+.task {
+    position: relative;
+    width: 100%;
+    transition: top .2s ease,opacity .2s ease;
+    font-size: 0;
+    height: 40px;
+    overflow: hidden;
+
+    .t-line {
+        height: 1px;
+        width: calc(100% - 80px);
+        margin-left: 52px;
+    }
+    .l-task-bg {
+        margin: 0 27px;
+        background-clip: content-box;
+        border-radius: 4px
+    }
+    .l-task {
+        display: block;
+        padding-left: 12px;
+        padding-right: 12px
+    }
+    
+    .t-inner {
+        height: 38px;
+        line-height: 38px
+    }
+
+    .t-check {
+        position: absolute;
+        padding-right: 10px
+    }
+    
+    .title-wrap {
+        height: 100%;
+        margin-left: 24px;
+        margin-right: 10px;
+        cursor: pointer;
+    }
+    
+    .title-wrap .title {
+        position: relative;
+        transition: all .2s ease-in-out;
+        height: 100%;
+        white-space: nowrap;
+        word-break: keep-all;
+        overflow: hidden;
+        font-size: 14px;
+        color: rgba(0,0,0,.85);
+    }
+    .title-wrap .title.active {
+        color: rgba(0,0,0,.36);
+    }
+    .tips {
+        position: relative;
+        float: right;
+        max-height: 38px;
+        z-index: 1;
+        white-space: nowrap;
+        cursor: default;
+    }
+    .t-date {
+        display: inline;
+        font-size: 13px;
+        margin-left: 8px;
+        color: rgba(0,0,0,.54);
+    }
+    .t-date .old{
+        color: red;
+    }
+    .t-date span {
+        font-size: 12px;
+        vertical-align: baseline;
+    }
+    .t-menu-toggle {
+        cursor: pointer;
+        position: absolute;
+        visibility: hidden;
+        font-size: 12px;
+        top: 10px;
+        right: 4px;
+        width: 20px;
+        height: 20px;
+        opacity: .8;
+    }
+}
+.task.active+.task .t-line.top, .task.active .t-line, .task .t-line.bottom, .task.ui-sortable-helper .t-line, .task:first-child .t-line, .task:hover+.task .t-line.top, .task:hover .t-line, .task:last-child.active .t-line.bottom, .task:last-child .t-line.bottom, .task:last-child:hover .t-line.bottom {
+    background-color: transparent;
+}
+.task.selected+.task .t-line.top, .task.selected .t-line {
+    background-color: transparent!important;
+}
+.task.active .l-task-bg, li.task.selected .l-task-bg {
+    background-color:rgba(105,112,132,.12)!important
+}
+
+.task:hover .l-task-bg {
+    background-color: rgba(75,111,222,.06)
+}
+.task:hover .t-menu-toggle {
+    visibility: inherit;
+    z-index: 100;
+}
+.task.selected+.task .t-line.top,.task.selected .t-line {
+    background-color: transparent!important
+}
+
+
+.right-view {
+    position: absolute;
+    top: 0;
+    height: 100%;
+    right: 0;
+    width: 36%;
+    border-left: 1px solid rgba(0,0,0,.06);
+}
+.task-inner-view {
+    padding-top: 10px;
+    position: relative;
+    padding: 15px 20px 4px 24px;
+    .task-title-input {
+        width: 100%;
+        height: 40px;
+        padding-right: 74px;
+        border: 1px solid;
+        outline: 0;
+        border-radius: 4px;
+        border-color: transparent;
+        font-size: 14px;
+        overflow: hidden;
+    }
+    .task-content-text {
+        
+        width: 100%;
+        min-height: 400px;
+        outline: 0;
+        border: none;
+    }
+}
+.detail-empty-img {
+    text-align: center;
+    img {
+        margin-top: 30px;
+    }
+}

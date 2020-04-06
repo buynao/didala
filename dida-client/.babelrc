@@ -1,0 +1,33 @@
+/*
+* 配置babel转码规则和插件
+* 关于babel参考： http://www.ruanyifeng.com/blog/2016/01/babel.html
+* # ES2015转码规则:
+* babel-preset-es2015
+* # react转码规则:
+*  babel-preset-react
+* # ES7不同阶段语法提案的转码规则（共有4个阶段），选装一个:
+* babel-preset-stage-0
+* babel-preset-stage-1
+* babel-preset-stage-2
+* babel-preset-stage-3
+*/
+
+{
+    "presets": [
+      ["@babel/preset-env", {
+       "useBuiltIns": "usage",
+       "corejs": 3
+      }],
+      "@babel/preset-react",
+      "@babel/preset-typescript"
+    ],
+    "plugins": [
+      ["import", {
+        "libraryName": "antd",
+        "libraryDirectory": "es",
+        "style": "css" // `style: true` 会加载 less 文件
+      }],
+      "@babel/proposal-class-properties",
+      "@babel/proposal-object-rest-spread"
+    ]
+}

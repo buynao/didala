@@ -1,0 +1,340 @@
+.calendar-view {
+  min-width: 300px;
+  position: absolute;
+  top: 0;
+  height: 100%;
+  left: 260px;
+  right: 0;
+}
+
+.calendar-wrap {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  -webkit-transition: all .2s ease-out;
+  transition: all .2s ease-out;
+}
+
+.c-nav {
+  text-align: center;
+  position: relative;
+  padding: 15px 18px 7px 70px;
+  z-index: 3;
+  height: rem-cacl(52);
+}
+
+.c-range-wrap {
+  position: relative;
+  height: 30px;
+  line-height: 30px;
+  min-width: 130px;
+  text-align: left;
+  color: rgba(0,0,0,.85);
+  .c-range {
+    position: relative;
+    top: 0;
+    display: inline-block;
+  }
+  .c-arrow {
+    display: inline-block;
+    font-size: 14px;
+    margin-left: 5px;
+    visibility: hidden;
+  }
+}
+
+.c-btn {
+  position: relative;
+  min-width: 28px;
+  line-height: 12px;
+  background-color: rgba(0,0,0,.06);
+  border-radius: 4px;
+  vertical-align: middle;
+  color: rgba(0,0,0,.85);
+}
+
+.btn.btn-sml, .button.btn-sml, button.btn-sml {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  font-size: 14px;
+}
+
+.c-nav .c-day {
+  margin-right: 1px;
+  margin-left: 10px;
+  border-radius: 4px 0px 0px 4px;
+  cursor: default;
+}
+.c-nav .c-week {
+  cursor: default;
+}
+.c-nav .c-month {
+  margin-right: 1px;
+  margin-left: 1px;
+  border-radius: 0 4px 4px 0;
+}
+.c-btn.c-selected {
+  background: #313643;
+  color: #fff;
+}
+.c-type-wrapper {
+  display: inline-block;
+}
+.c-nav .c-type-wrapper .c-btn {
+  min-width: 60px;
+}
+.c-nav .c-week {
+  border-radius: 0;
+}
+
+// 日历 - 主体
+.c-content {
+  display: flex;
+  flex: auto;
+  overflow: hidden;
+}
+
+.c-container {
+  position: relative;
+  flex: auto;
+}
+
+.c-main {
+  position: absolute;
+  top: 0;
+  -webkit-transition: none;
+  transition: none;
+  z-index: 1;
+  flex: auto;
+  overflow: hidden;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+.c-content .c-month {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  flex: auto;
+  overflow: hidden;
+  height: 100%;
+  left: 0;
+  right: 0;
+}
+.c-day-label {
+  position: relative;
+  border-top: 1px solid #e8e8e8;
+  height: 30px;
+}
+.c-day-labes-inner {
+  width: 100%;
+  table-layout: fixed;
+}
+.c-day-labes-inner .c-day-label {
+  padding: 0 10px;
+  font-size: 13px;
+  line-height: 28px;
+  color: rgba(0,0,0,.85);
+}
+.c-day-label.c-day-week {
+  color: rgba(0,0,0,.36);
+}
+.c-day-scroll {
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  height: 836px;
+  min-height: 350px;
+  min-width: 280px;
+}
+.c-row {
+  position: relative;
+  width: 100%;
+  flex: 1 1;
+  min-height: 71px;
+  border-top: 1px solid rgba(0,0,0,.04);
+}
+.content-skeleton {
+  position: relative;
+  height: 100%;
+}
+.content-skeleton table {
+  height: 100%;
+}
+.c-day-scroll .c-row table {
+  width: 100%;
+  table-layout: fixed;
+  border-collapse: collapse;
+}
+.c-titlebar {
+  position: relative;
+  line-height: 1;
+  padding: 8px 8px 8px 4px;
+}
+.c-title {
+  position: absolute;
+  top: 6px;
+  max-width: 100%;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 16px;
+  line-height: 16px;
+  font-size: 0;
+}
+.c-task-list{
+  position: absolute;
+  top: 25px;
+  width: 100%;
+  height: 80%;
+  overflow-y: auto;
+}
+.c-task {
+  z-index: 9;
+}
+.c-solar {
+  display: inline-block;
+  width: 24px;
+  text-align: center;
+  font-size: 14px;
+}
+.c-hw-info {
+  position: absolute;
+  right: 10px;
+  text-align: center;
+  border-radius: 50%;
+}
+.c-title .c-solar+span {
+  margin-left: 6px;
+}
+.tk-calendar .c-row table td {
+  vertical-align: top;
+}
+.contetnt-bg {
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 1;
+}
+.c-row .contetnt-bg table  {
+  height: 100%;
+}
+
+.contetnt-bg td {
+  vertical-align: top;
+  border-color: rgba(0,0,0,.04);
+  border-style: solid;
+  border-width: 0 1px;
+}
+
+
+.c-task {
+  position: relative;
+  overflow: hidden;
+  height: 19px;
+  line-height: 19px;
+  padding: 0 4px;
+  margin-bottom: 2px;
+  cursor: pointer;
+  border-radius: 2px;
+  opacity: 1;
+  margin-left: 3px;
+  margin-right: 3px;
+  margin-top: 1px;
+}
+
+.task-title {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  font-size: 12px;
+}
+
+.c-task.finished {
+  color: #282b35;
+  background-color: rgba(76,81,95,.54);
+}
+
+.c-task.unfinished {
+  background-color: rgba(75, 166, 239, 0.54);
+  color: rgb(45, 70, 89);
+}
+
+.c-btn .c-type-selected {
+  background-color: #313643;
+}
+
+.c-nav {
+  .c-today {
+    height: 28px;
+    border-radius: 0px;
+    margin: 0 1px;
+  }
+  .c-prev, .c-next{
+    padding: 2px;
+    border: none;
+    height: 28px;
+    transition: all .5s;
+  }
+  .c-btn:active {
+    opacity: .5;
+  }
+  .c-prev {
+    border-radius: 4px 0 0 4px;
+    border-right-width: 0;
+  }
+  .c-next {
+    border-radius: 0 4px 4px 0;
+    border-left-width: 0;
+  }
+}
+
+//enter是入场前的刹那（点击按钮），appear指页面第一次加载前的一刹那（自动）
+.next-enter, .next-appear {
+  opacity: 0;
+  transform: translateX(300px);
+}
+//enter-active指入场后到入场结束的过程，appear-active则是页面第一次加载自动执行
+.next-enter-active, .next-appear-active { 
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 300ms ease-in-out;
+}
+//入场动画执行完毕后，保持状态
+.next-enter-done {
+  opacity: 1;
+  transform: translateX(0px);
+}
+//同理，出场前的一刹那，以下就不详细解释了，一样的道理
+.fade-exit {
+  display: none;
+}
+
+.fade-exit-active {
+  display: none;
+}
+
+.fade-exit-done {
+  display: none;
+}
+/* --------------- */
+
+//enter是入场前的刹那（点击按钮），appear指页面第一次加载前的一刹那（自动）
+.prev-enter, .prev-appear {
+  opacity: 0;
+  transform: translateX(-300px);
+}
+//enter-active指入场后到入场结束的过程，appear-active则是页面第一次加载自动执行
+.prev-enter-active, .prev-appear-active { 
+  opacity: 1;
+  transform: translateX(0px);
+  transition: all 300ms ease-in-out;
+}
+//入场动画执行完毕后，保持状态
+.prev-enter-done {
+  opacity: 1;
+  transform: translateX(0px);
+}

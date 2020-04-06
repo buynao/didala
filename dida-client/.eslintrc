@@ -1,0 +1,61 @@
+{
+    "parser": "babel-eslint",
+    "extends": "airbnb",
+    "env": {
+        "browser": true,
+        "es6": true
+    },
+    "globals": {
+        "ReactDom": false
+    },
+    "plugins": [
+        "react",
+        "react-hooks"
+    ],
+    "rules": {
+        // 缩进
+        "indent": ["error", 4, { "SwitchCase": 1, "VariableDeclarator": { "var": 2, "let": 2, "const": 3 } }],
+        // 只允许单引号，字符串模板中允许反勾号
+        "quotes": ["error", "single", { "allowTemplateLiterals": true, "avoidEscape": true }],
+        "linebreak-style": "off",
+        // 设置允许调用本类中以下划线开头的成员。
+        "no-underscore-dangle": ["error", { "allowAfterThis": true }],
+        // 要求箭头函数体使用大括号
+        "arrow-body-style": ["error", "always"],
+        // 一行的最大字符数设计为120
+        "max-len": ["error", { "code": 120, "ignoreTemplateLiterals": true, "ignoreRegExpLiterals": true, "ignoreUrls": true }],
+        // 设置允许在成员方法内不使用本类的成员方法或属性的规则
+        // "class-methods-use-this": ["error", { "exceptMethods": ["pRender", "mRender"] }],
+        "class-methods-use-this": "off",
+        // 设置一旦方法内有返回值，那么该方法内的所有返回都必须制定值的规则。
+        "consistent-return": ["error", { "treatUndefinedAsUnspecified": false }],
+        // 设置不允许在循环外使用++
+        "no-plusplus": ["error", { "allowForLoopAfterthoughts": true }],
+        // 设置不允许给参数赋值，但是可以对参数中的成员进行赋值的规则
+        "no-param-reassign": ["error", { "props": false }],
+        // 设置允许使用continue
+        "no-continue": "off",
+        // 设置允许在a标签的链接中使用javascript:void(0);
+        "no-script-url": "off",
+        // 设置不允许使用特定的语法
+        "no-restricted-syntax": [
+            "error",
+            "ForOfStatement",
+            "LabeledStatement",
+            "WithStatement"
+        ],
+        "import/prefer-default-export": "off",
+        // "react/jsx-uses-vars": 1,
+        "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
+        "jsx-a11y/anchor-is-valid": [ "error", { "components": [ "Link" ], "specialLink": [ "to" ] } ],
+        "react/jsx-no-bind": "off",
+        "react/forbid-prop-types": ["error", { "forbid": ["any"] }],
+        "react/jsx-indent": ["error", 4],
+        "react/jsx-indent-props": [2, 4],
+        "react/react-in-jsx-scope": "off",
+        "react/prefer-stateless-function": [1, { "ignorePureComponents": true }],
+        "jsx-a11y/no-static-element-interactions": "off",
+        "react-hooks/rules-of-hooks": "error",
+        "react-hooks/exhaustive-deps": "warn"
+    }
+}
