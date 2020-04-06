@@ -5,7 +5,7 @@ import AccountInput from "./component/Input";
 import accountActions, { registerAsync, logInAsync, checkInAsync } from "@actions/account";
 import { titlePrefix } from "@util/help";
 import { ILoginAndRegister } from "MyTypes";
-const styles = require("./style.less");
+require("./style.less");
 const bgLeft = require("./img/bg_left.png");
 const bgRight = require("./img/bg_right.png");
 const logo = require("./img/logo.png");

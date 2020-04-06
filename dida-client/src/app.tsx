@@ -6,7 +6,7 @@ import { Provider } from "react-redux";
 import store from "./store";
 import App from "./router"; // 页面启动
 
-const styles = require("./style.less");
+require("./style.less");
 
 const $app = document.getElementById("app");
 

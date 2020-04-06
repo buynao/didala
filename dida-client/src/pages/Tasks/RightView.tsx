@@ -1,7 +1,7 @@
 import * as React from "react";
 import { IGlobalTask, ITaskMethods } from "MyTypes";
+require("./style.less");
 
-const styles = require("./style.less");
 const emptyTaskPic = require("./img/task.png").default;
 
 interface IProps extends ITaskMethods {

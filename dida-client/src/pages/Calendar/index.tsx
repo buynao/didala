@@ -5,8 +5,8 @@ import { TaskItem, ITaskMethods, IGlobalTask } from "MyTypes";
 import { titlePrefix } from "@util/help";
 import Header from "./Header";
 import Content from "./Content";
+require("./style.less");
 
-const styles = require("./style.less");
 type curDate = {
     cYear: number;
     cMonth: number;

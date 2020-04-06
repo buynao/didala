@@ -8,7 +8,7 @@ import { titlePrefix } from "@util/help";
 
 import { TaskItem, IGlobalTask, ITaskMethods } from "MyTypes";
 
-const styles = require("./style.less");
+require("./style.less");
 
 type TypeDesc = "today" | "all";
 
@@ -19,7 +19,7 @@ interface IProps extends ITaskMethods {
 }
 const TASK_DESC = {
     today: "今天",
-    all: "所有de",
+    all: "所有的",
 };
 
 const Task = function(props: IProps) {
