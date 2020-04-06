@@ -1,6 +1,14 @@
 # didala
 一款基于 TS + React + Hooks + RxJs + Koa2 + MongoDB 实现的 仿滴答清单的全栈应用 http://didala.buynao.com/
 
+### Demo
+
+
+<img src="https://buynao.oss-cn-beijing.aliyuncs.com/20200406_193852.gif"/>
+
+[http://dida.buynao.com](http://dida.buynao.com)
+
+
 ### 本地运行
 
 ```bash
@@ -30,13 +38,6 @@ npm i
 # 启动前端服务，监听本地1026端口
 npm run start
 ```
-
-### Demo
-
-
-<img src="https://buynao.oss-cn-beijing.aliyuncs.com/20200406_193852.gif"/>
-
-[http://dida.buynao.com](http://dida.buynao.com)
 
 #### Features
 
