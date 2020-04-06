@@ -31,8 +31,10 @@ npm i
 npm run start
 ```
 
-
 ### Demo
+
+
+<img src="https://buynao.oss-cn-beijing.aliyuncs.com/20200406_193852.gif"/>
 
 [http://dida.buynao.com](http://dida.buynao.com)
 
