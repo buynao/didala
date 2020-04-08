@@ -25,17 +25,17 @@ const Content = function (props: IProps) {
     const [state, saveState ] = React.useState({
         type: "",
         timeTitle: "",
-        taskInfo: {},
+        taskItem: {},
     });
     const { isShowPanel, selectTask, transition } = props;
     const [visible, changeVisible] = React.useState(false);
-    const { type, timeTitle, taskInfo } = state;
+    const { type, timeTitle, taskItem } = state;
 
     // 选择日期任务
     const handleSeletctDate = (task, timeTitle) => {
         selectTask(task);
         saveState({
-            taskInfo: task,
+            taskItem: task,
             type: "edit",
             timeTitle,
         });
@@ -45,7 +45,7 @@ const Content = function (props: IProps) {
     // 新建空白任务
     const handleAddDate = (timeTitle) => {
         saveState({
-            taskInfo: {},
+            taskItem: {},
             type: "add",
             timeTitle,
         });
@@ -72,7 +72,7 @@ const Content = function (props: IProps) {
         <TaskModal
             timeTitle={timeTitle}
             visible={visible}
-            taskInfo={taskInfo as TaskItem}
+            taskItem={taskItem as TaskItem}
             callParentCancel={handleCloseTaskModel}
             deleteTask={props.deleteTask}
             {...props}
