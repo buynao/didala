@@ -1,16 +1,12 @@
 import * as React from "react";
 import { connect } from "react-redux";
 import { dispatchProps } from "@reducers/task";
-import { TaskItem, ITaskMethods, IGlobalTask } from "MyTypes";
+import { TaskItem, ITaskMethods, IGlobalTask, DateType, IDate } from "MyTypes";
 import { titlePrefix } from "@util/help";
 import Header from "./Header";
 import Content from "./Content";
 require("./style.less");
 
-type curDate = {
-    cYear: number;
-    cMonth: number;
-}
 interface IProps extends ITaskMethods {
     curTask: TaskItem;
     tasks: IGlobalTask;
@@ -18,33 +14,34 @@ interface IProps extends ITaskMethods {
     type: string;
 }
 
-function useGetStandDate(date) {
-    const cYear = date.getFullYear();
-    let cMonth = (date.getMonth() + 1) as any;
-        cMonth = cMonth < 10 ? `0${cMonth}` : `${cMonth}`;
-        cMonth = Number(cMonth);
-    const [ curDate, changeCurDate ] = React.useState({
-        cYear, cMonth
+function useGetStandDate(date: Date) {
+    const year = date.getFullYear();
+    let month = (date.getMonth() + 1) as any;
+        month = month < 10 ? `0${month}` : `${month}`;
+        month = Number(month);
+    const day = date.getDate();
+    const [ curDate, changeCurDate ] = React.useState<IDate>({
+        year, month, day
     });
     return { curDate, changeCurDate };
 }
 
 const Calendar = function (props: IProps) {
-    const date = new Date();
-    const { curDate, changeCurDate } = useGetStandDate(date);
+    const { curDate, changeCurDate } = useGetStandDate(new Date());
     const [ initDate ] = React.useState(curDate)
     const [ isShowPanel, tooglePanel ] = React.useState(true);
     const [ transition, changeTransition] = React.useState("");
+    const [ DateType, changeDateType ] = React.useState<DateType>("week");
     const { all } = props.tasks; // 当月任务 -> 暂取全局
 
     React.useEffect(() => {
-        // const timeZone = getTimeZone(curDate.cYear, curDate.cMonth);
+        // const timeZone = getTimeZone(curDate.year, curDate.month);
         // 获取当前时间段的任务
         // props.getTaskList(timeZone);
         document.title = titlePrefix('日历');
     }, []);
 
-    const refreshPanel = (data: curDate, transitionType: string) => {
+    const refreshPanel = (data: IDate, transitionType: string) => {
         changeCurDate(data);
         tooglePanel(false); // 动画效果切换
         setTimeout(() => {
@@ -56,11 +53,14 @@ const Calendar = function (props: IProps) {
     return (<div className="calendar-view">
         <div className="calendar-wrap">
             <Header
+                dateType={DateType}
+                changeDateType={changeDateType}
                 initDate={initDate}
                 curDate={curDate}
                 refreshPanel={refreshPanel}
             />
             <Content
+                dateType={DateType}
                 isShowPanel={isShowPanel}
                 curDate={curDate}
                 curTaskList={all}

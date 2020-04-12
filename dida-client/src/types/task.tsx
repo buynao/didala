@@ -33,4 +33,18 @@ declare module 'MyTypes' {
         changeTaskAutoSave?: (data: TaskItem) => void;
         getTaskList?: (data: any) => void;
     }
+
+    export type DateType = 'month' | 'week' | 'today';
+
+    export type IDate = {
+        year: number,
+        month: number,
+        day: number;
+    }
+    export interface DateBodyProps {
+        curDate: IDate;
+        tasks: IGlobalTask
+        handleAddDate: any;
+        handleSeletctDate: any;
+    }
 }

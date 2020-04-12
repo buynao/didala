@@ -1,19 +1,18 @@
 import * as React from "react";
 import TaskModal from "@comp/TaskModal";
-import { TasksLists, TaskItem, IGlobalTask, ITaskMethods } from "MyTypes";
+import { TasksLists, TaskItem, IGlobalTask, ITaskMethods, DateType, IDate } from "MyTypes";
 import MonthContent from "./MonthPanel";
+import WeekContent from "./WeekPanel";
 
 
 interface IProps extends ITaskMethods {
-    curDate: {
-        cYear: number;
-        cMonth: any;
-    };
+    curDate: IDate;
     transition: string;
     curTaskList: TasksLists;
     tasks: IGlobalTask;
     curTask: TaskItem;
     isShowPanel: boolean;
+    dateType: DateType;
 }
 
 
@@ -27,7 +26,7 @@ const Content = function (props: IProps) {
         timeTitle: "",
         taskItem: {},
     });
-    const { isShowPanel, selectTask, transition } = props;
+    const { isShowPanel, selectTask, transition, dateType } = props;
     const [visible, changeVisible] = React.useState(false);
     const { type, timeTitle, taskItem } = state;
 
@@ -60,13 +59,23 @@ const Content = function (props: IProps) {
     return <div className="c-content">
         <div className="c-container">
             <div className="c-main">
-                <MonthContent
-                    handleSeletctDate={handleSeletctDate}
-                    handleAddDate={handleAddDate}
-                    isShowPanel={isShowPanel}
-                    transition={transition}
-                    {...props}
-                />
+                {
+                    dateType === 'month' ? 
+                    <MonthContent
+                        handleSeletctDate={handleSeletctDate}
+                        handleAddDate={handleAddDate}
+                        isShowPanel={isShowPanel}
+                        transition={transition}
+                        {...props}
+                    /> : 
+                    <WeekContent
+                        handleSeletctDate={handleSeletctDate}
+                        handleAddDate={handleAddDate}
+                        isShowPanel={isShowPanel}
+                        transition={transition}
+                        {...props}
+                    />
+                }
             </div>
         </div>
         <TaskModal

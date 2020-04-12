@@ -1,17 +1,7 @@
 import * as React from "react";
-import { IGlobalTask, TasksLists, TaskItem } from "MyTypes";
-import { fixDate } from "@util/help";
+import { TasksLists, TaskItem, DateBodyProps } from "MyTypes";
+import { addZero } from "@util/help";
 import { Scrollbars } from "react-custom-scrollbars";
-
-export interface DateBodyProps {
-    curDate: {
-        cYear: number,
-        cMonth: number,
-    };
-    tasks: IGlobalTask
-    handleAddDate: any;
-    handleSeletctDate: any;
-}
 
 interface IDateBody {
     date: string;
@@ -32,7 +22,7 @@ const DateBody = (props: DateBodyProps) : JSX.Element => {
     // 暂时使用task.all 渲染日历列表
     const { curDate, tasks, handleAddDate, handleSeletctDate } = props;
     const tasksList = buildDayForTasks(tasks.all);
-    const lists = buildDateBody(curDate.cYear, curDate.cMonth, tasksList);
+    const lists = buildDateBody(curDate.year, curDate.month, tasksList);
 
     return (<>
         {lists.map((row, index) => {
@@ -141,7 +131,7 @@ function buildDateBody(year: number, month: number, tasks: DayForTask) : DateBod
     const beforeDayLen = new Date(beforeYear, beforeMonth, 0).getDate();
     let k = 0;
     for (; i > 0; i--, k++) {
-        const beforeDate =  `${beforeYear}-${fixDate(beforeMonth)}-${fixDate(beforeDayLen - i + 1)}`;
+        const beforeDate =  `${beforeYear}-${addZero(beforeMonth)}-${addZero(beforeDayLen - i + 1)}`;
         lists[0].push({
             date: beforeDate,
             year: beforeYear,
@@ -157,7 +147,7 @@ function buildDateBody(year: number, month: number, tasks: DayForTask) : DateBod
     for (i = 1; i <= curDayLen; i++) {
         row = Math.floor( (i + k) / 7 );
         lists[row] = lists[row] || [];
-        const date = `${year}-${fixDate(month)}-${fixDate(i)}`;
+        const date = `${year}-${addZero(month)}-${addZero(i)}`;
         lists[row].push({
             year,
             month,
@@ -173,7 +163,7 @@ function buildDateBody(year: number, month: number, tasks: DayForTask) : DateBod
     let j = 1;
     while (lists[row].length < WEEK_LEN) {
         const day = j++;
-        const afterDate = `${afterYear}-${fixDate(afterMonth)}-${fixDate(day)}`;
+        const afterDate = `${afterYear}-${addZero(afterMonth)}-${addZero(day)}`;
         lists[row].push({
             date: afterDate,
             year: afterYear,
@@ -189,7 +179,7 @@ function getDateKey(date: string | Date) {
     var curDate = new Date(date);
     const month = curDate.getMonth() + 1;
     const day = curDate.getDate();
-    return `${curDate.getFullYear()}-${fixDate(month)}-${fixDate(day)}`;
+    return `${curDate.getFullYear()}-${addZero(month)}-${addZero(day)}`;
 }
 
 export default DateBody;

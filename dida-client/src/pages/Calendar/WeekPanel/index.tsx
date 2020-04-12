@@ -3,13 +3,15 @@ import DateHead from "./DateHead";
 import DateBody from "./DateBody";
 import { DateBodyProps } from "MyTypes";
 import { CSSTransition } from 'react-transition-group';
+require("./style.less");
+
 
 interface IProps extends DateBodyProps {
     isShowPanel: boolean;
     transition: string;
 }
 
-const MonthContent = function (props: IProps) {
+const WeekContent = function (props: IProps) {
     const { isShowPanel, transition } = props;
 
     return (<CSSTransition
@@ -17,14 +19,14 @@ const MonthContent = function (props: IProps) {
         timeout={300}
         classNames={transition}
         unmountOnExit
-      ><div className="c-month">
-        <div className="c-day-label">
-            <DateHead />
+      ><div className="c-week-container">
+        <div className="c-week-label">
+            <DateHead {...props} />
         </div>
-        <div className="c-day-scroll" style={{height: `${window.innerHeight - 30 - 52}px`}}>
+        <div className="c-week-scroll">
             <DateBody {...props} />
         </div>
     </div></CSSTransition>)
 }
 
-export default MonthContent;
+export default WeekContent;

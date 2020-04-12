@@ -4,7 +4,7 @@ import Checkbox from "antd/es/checkbox";
 import Popconfirm from "antd/es/popconfirm";
 import { TaskItem } from "MyTypes";
 import { DeleteIcon } from "@icons";
-import { fixDate } from "@util/help";
+import { addZero } from "@util/help";
 interface IPrpops {
     key: any;
     task: TaskItem;
@@ -20,19 +20,19 @@ interface IPrpops {
 **/
 const date2pretty = (date: string | Date) => {
   const cDate = new Date();
-  const cYear = cDate.getFullYear();
+  const year = cDate.getFullYear();
   const cMonth = cDate.getMonth() + 1;
   const cDay = cDate.getDate();
   const tdate = new Date(date);
   const tYear = tdate.getFullYear();
   const tMonth = tdate.getMonth() + 1;
   const tDay = tdate.getDate();
-  const cstr = `${cYear}-${fixDate(cMonth)}-${fixDate(cDay)}`;
-  const tstr = `${tYear}-${fixDate(tMonth)}-${fixDate(tDay)}`;
+  const cstr = `${year}-${addZero(cMonth)}-${addZero(cDay)}`;
+  const tstr = `${tYear}-${addZero(tMonth)}-${addZero(tDay)}`;
   if (cstr === tstr) {
     return "今天";
   }
-  if (cYear === tYear && cMonth === tMonth) {
+  if (year === tYear && cMonth === tMonth) {
     if (cDay > tDay) {
       return {
         1: "昨天",

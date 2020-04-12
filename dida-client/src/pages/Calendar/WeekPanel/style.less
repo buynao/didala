@@ -1,0 +1,192 @@
+.c-week-container {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    .c-week-label {
+        overflow: hidden;
+        max-height: 66%;
+        display: flex;
+        flex-direction: column;
+    }
+    .c-week-label.default {
+        max-height: 208.5px;
+    }
+    .top-container-week {
+        display: table;
+    }
+    .wk-tzlabel {
+        width: 62px;
+        vertical-align: middle;
+        text-align: center;
+        overflow: hidden;
+    }
+    .c-day-label {
+        border-color: #e8e8e8;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        border-bottom: 0;
+        box-sizing: content-box;
+    }
+    .wk-weektop {
+        table-layout: fixed;
+        width: 100%;
+        height: 72px;
+        overflow: hidden;
+        color: rgba(0,0,0,.36);
+        border-top: 1px solid #e8e8e8;
+        border-right: 1px solid #e8e8e8;
+    }
+    .wk-weektop .c-day-label {
+        border-color: #e8e8e8;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+        border-bottom: 0;
+        box-sizing: content-box;
+    }
+    .wk-dayname {
+        position: relative;
+        height: 72px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        padding: 8px 12px 10px;
+    }
+    .wk-daylink-name {
+        line-height: 14px;
+        font-size: 13px;
+        padding-right: 26px;
+        color: rgba(0,0,0,.54);
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        -webkit-transform-origin: left;
+        transform-origin: left;
+    }
+    .wk-daylink-holiday {
+        padding-right: 0;
+    }
+    .wk-daylink-number {
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: 700;
+        color: rgba(0,0,0,.85);
+    }
+    .c-solar-day {
+        position: relative;
+        z-index: 0;
+    }
+    .wk-dayname .wk-daylink-number {
+        font-size: 32px;
+        line-height: 32px;
+        font-weight: 700;
+        color: rgba(0,0,0,.85);
+    }
+    .wk-dayname .wk-daylink-today {
+        color: #4b6fde;
+    }
+    .wk-scroll-label {
+        border-left: 1px solid #e8e8e8;
+        width: 15px;
+    }
+}
+.wk-allday {
+    flex: auto;
+    max-height: calc(100% - 72px);
+    min-height: 243px;
+    border-color: #e8e8e8;
+    border-style: solid;
+    border-width: 0 1px 1px 0;
+    box-sizing: content-box;
+    padding-right: 14px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    .tg-time-all {
+        position: absolute;
+        top: -73px;
+        bottom: 0;
+        width: 62px;
+        float: left;
+        color: rgba(0,0,0,.36);
+        padding-right: 2px;
+        font-size: 12px;
+        overflow: hidden;
+        flex: 1 1;
+    }
+    .dragArea {
+        position: absolute;
+        bottom: -3px;
+        left: 0;
+        z-index: 10;
+        width: 100%;
+        height: 9px;
+        cursor: ns-resize;
+    }
+    .dragger {
+        margin-top: 3px;
+        height: 3px;
+        background-color: #e5e5e5;
+    }
+    .tg-allday-wrapper {
+        display: flex;
+        height: 100%;
+        margin-left: 62px;
+        border-right: 1px solid #e8e8e8;
+    }
+    .tg-allday {
+        width: 100%;
+        position: relative;
+    }
+    .tg-allday .bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: -1px;
+        z-index: 1;
+    }
+    .tg-allday-wrapper .tg-allday .bg table {
+        width: 100%;
+        height: 100%;
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    .tg-allday .bg table td {
+        border-color: #e8e8e8;
+        border-style: solid;
+        border-width: 0 0 1px 1px;
+    }
+    .tg-allday-wrapper .tg-allday td:empty {
+        height: 22px;
+    }
+    .tg-allday-wrapper .tg-allday td {
+        vertical-align: top;
+    }
+    .antiscroll-wrap {
+        position: relative;
+        height: 100%;
+        overflow: hidden;
+    }
+    .content-wrapper {
+        margin-right: -14px;
+        padding-right: 14px;
+    }
+    .content-skeleton {
+        position: relative;
+        padding: 1px 0 2px;
+        z-index: 2;
+        table {
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .tg-allday table {
+        table-layout: fixed;
+        border-collapse: collapse;
+    }
+    .c-task {
+        margin: 5px;
+    }
+    .c-titlebar{
+        padding: 0px;
+    }
+}
