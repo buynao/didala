@@ -41,10 +41,24 @@ declare module 'MyTypes' {
         month: number,
         day: number;
     }
+
+    /**
+     * curDate：当前的日期
+     * tasks: 汇总任务列表
+     * handleAddAate: 添加日期
+     * handleSeletctDate: 选择日期任务进行展示/编辑
+    */
     export interface DateBodyProps {
         curDate: IDate;
-        tasks: IGlobalTask
+        tasks: IGlobalTask;
         handleAddDate: any;
         handleSeletctDate: any;
+    }
+    export interface IDateBody {
+        date: string;
+        year: number;
+        month: number;
+        day: number;
+        task: TaskItem[];
     }
 }

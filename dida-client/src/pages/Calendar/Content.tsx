@@ -30,7 +30,7 @@ const Content = function (props: IProps) {
     const [visible, changeVisible] = React.useState(false);
     const { type, timeTitle, taskItem } = state;
 
-    // 选择日期任务
+    // 选择日期任务 - 进行展示/编辑
     const handleSeletctDate = (task, timeTitle) => {
         selectTask(task);
         saveState({
@@ -41,7 +41,7 @@ const Content = function (props: IProps) {
         changeVisible(true);
     };
 
-    // 新建空白任务
+    // 新建空白任务 - 进行展示/编辑
     const handleAddDate = (timeTitle) => {
         saveState({
             taskItem: {},

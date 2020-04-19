@@ -155,9 +155,7 @@
         border-style: solid;
         border-width: 0 0 1px 1px;
     }
-    .tg-allday-wrapper .tg-allday td:empty {
-        height: 22px;
-    }
+
     .tg-allday-wrapper .tg-allday td {
         vertical-align: top;
     }
@@ -173,15 +171,21 @@
     .content-skeleton {
         position: relative;
         padding: 1px 0 2px;
-        z-index: 2;
         table {
             width: 100%;
             height: 100%;
+        }
+        .c-task-title {
+            z-index: 2;
         }
     }
     .tg-allday table {
         table-layout: fixed;
         border-collapse: collapse;
+    }
+    .tg-allday .all-day-item {
+        position: relative;
+        z-index: 1;
     }
     .c-task {
         margin: 5px;
@@ -190,3 +194,171 @@
         padding: 0px;
     }
 }
+
+
+    .c-week-scroll {
+        flex: 1 1;
+    }
+    .wk-scrolltimedevents {
+        font-size: 12px;
+        position: relative;
+        height: 100%;
+    }
+    .antiscroll-inner {
+        overflow: auto;
+        width: 100%;
+        height: 100%;
+        -ms-overflow-style: none;
+    }
+    .wk-scrolltimedevents .tg-mainwrapper {
+        position: relative;
+        border: 1px solid #e8e8e8;
+        border-top: 0;
+        border-bottom: 0;
+        border-left: 0;
+        padding-right: 14px;
+    }
+    .tg-mainwrapper.hide-range {
+        margin-top: 41px;
+        margin-bottom: 41px;
+    }
+    .tg-times-pri {
+        position: relative;
+        width: 62px;
+        color: rgba(0,0,0,.36);
+        padding: 1px 0 0;
+        text-align: right;
+        vertical-align: top;
+    }
+    .tg-time-pri {
+        padding-right: 2px;
+        text-align: right;
+    }
+    .tg-col {
+        border-left: 1px solid #e8e8e8;
+        vertical-align: top;
+    }
+    .tg-spanningwrapper {
+        position: relative;
+        margin: 1px 0 0 1px;
+    }
+    .tg-hourmarkers {
+        position: absolute;
+        width: 100%;
+    }
+    .tg-dualmarker {
+        border-bottom: 1px dotted #e8e8e8;
+        border-top: 1px solid #e8e8e8;
+        font-size: 1px;
+    }
+    .tg-timedevents {
+        height: 1010px;
+        table-layout: fixed;
+        max-width: none;
+        width: auto;
+        min-width: 100%;
+        margin-top: -2px;
+        border-right: 1px solid #e8e8e8;
+    }
+    .tg-col-eventwrapper {
+        position: relative;
+    }
+    .tg-gutter {
+        position: relative;
+        height: 0;
+        margin-right: 10px;
+    }
+
+    .rrd-range-group {
+        position: absolute;
+        width: 100%;
+        cursor: pointer;
+    }
+    .tg-times-pri:hover .rrd-range-group {
+        background-color: rgba(0,0,0,.06);
+    }
+    .crd-top, .crd-bottom {
+        position: relative;
+        width: calc(100% + 1px);
+        cursor: pointer;
+        line-height: 20px;
+        background-color: rgba(0,0,0,.06);
+    }
+    .tg-times-pri .tg-times-pri-wrapper>div.crd-top {
+        margin-left: -1px;
+    }
+    .tg-times-pri-wrapper>div:first-child.crd-top {
+        margin-top: 0;
+    }
+    .tg-times-pri .tg-times-pri-wrapper>div.crd-bottom {
+        margin: 1px 0 -9px -1px;
+    }
+    .tg-mainwrapper.hide-range .tg-times-pri-wrapper {
+        position: relative;
+        padding-bottom: 0;
+        top: -41px;
+        margin-bottom: -82px;
+    }
+    .tg-markercell.cgd-gutter-bg-bottom, 
+    .tg-markercell.cgd-gutter-bg-top {
+        position: relative;
+        height: 42px;
+        margin-bottom: -42px;
+        top: -42px;
+    }
+    .tg-markercell.cgd-gutter-bg-bottom {
+        top: auto;
+    }
+    .cgd-col {
+        position: relative;
+        top: -42px;
+        left: -1px;
+        margin-right: -1px;
+        height: 42px;
+        margin-bottom: -42px;
+        border-top: 1px solid #e8e8e8;
+        border-bottom-width: 0;
+    }
+    .tg-timedevents .tg-col:last-child .cgd-col {
+        width: calc(100% + 2px);
+        border-right: 1px solid #e8e8e8;
+    }
+    .tg-mainwrapper .tg-timedevents .tg-col {
+        border-left: 1px solid #e8e8e8;
+        vertical-align: top;
+    }
+
+    .c-task {
+        color: #282b35;
+        background-color: rgba(76,81,95,.54);
+    }
+    .c-task .c-task-wrapper {
+        padding: 5px 4px;
+    }
+    .c-task .c-task-wrapper {
+        overflow: hidden;
+        padding: 5px 4px;
+        height: 100%;
+    }
+    .tg-col .tg-col-eventwrapper .tg-gutter .c-task .c-task-wrapper .c-task-inner {
+        height: 100%;
+    }
+    .c-task-inner {
+        overflow: hidden;
+    }
+    .text-tny {
+        font-size: 12px;
+    }
+    .c-task .c-task-wrapper .c-task-inner .c-task-time{
+        -webkit-transform-origin: top left;
+        transform-origin: top left;
+        white-space: nowrap;
+        text-overflow: clip;
+        height: 15px;
+    }
+    .wk-grid-container .c-task .c-task-time {
+        font-size: 12px;
+        line-height: 37px;
+        -webkit-transform-origin: bottom;
+        transform-origin: bottom;
+    }

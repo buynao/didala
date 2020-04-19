@@ -37,8 +37,13 @@ module.exports = appInfo => {
   };
   // mongo数据库
   exports.mongoose = {
-    url: 'mongodb://127.0.0.1/diary',
-    options: {},
+    // url: 'mongodb://127.0.0.1/diary',
+    url: 'mongodb+srv://fulong:fulonga@dida-lpq62.mongodb.net/test',
+    options: {
+      retryWrites: true,
+      w: 'majority',
+      useUnifiedTopology: true,
+    },
   };
   // add your user config here
   const userConfig = {

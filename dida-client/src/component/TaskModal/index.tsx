@@ -17,7 +17,7 @@ type typeValue = "content" | "title";
 
 function TaskModal (props: IProps) {
     const { updateTask, callParentCancel, timeTitle, type, addTask, deleteTask, visible, taskItem } = props;
-    
+    console.log(taskItem);
     const [prevTask, setPrevTask] = React.useState({
         content: "",
         title: "",
@@ -25,7 +25,7 @@ function TaskModal (props: IProps) {
     const { title, content, _id } =  prevTask;
 
     // 取最新的数据
-    if (taskItem._id !== _id) {
+    if (taskItem._id !== _id){
         setPrevTask(taskItem);
     }
 
@@ -47,6 +47,10 @@ function TaskModal (props: IProps) {
                     title,
                     content,
                     startTime: timeTitle
+                } as TaskItem);
+                setPrevTask({
+                    title: '',
+                    content: '',
                 } as TaskItem);
             }
         }

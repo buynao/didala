@@ -1,6 +1,11 @@
 
 
-import { IDate } from "MyTypes";
+import { IGlobalTask, TasksLists, TaskItem, IDate, IDateBody } from "MyTypes";
+
+
+interface DayForTask {
+  [index: string]: [] | TaskItem[]
+}
 
 const date2pretty = (date) => {
     const cDate = new Date();
@@ -62,7 +67,52 @@ function moveDate(time: string | Date, left?: number, right?: number) {
     }
     return curDate;
 }
-
+function buildDateBody(curDate: IDate, tasks: DayForTask) :IDateBody[] {
+  const lists = [];
+  const { year, month, day } = curDate;
+  const time = new Date(`${year}-${month}-${day}`);
+  const curDay = time.getDay() - 1; // 当周第一天，星期几
+  const WEEK_LEN = 7;
+  let i = curDay < 0 ? 6 : curDay; // [0：周一，1：周二，2：周三, ...]
+  const startDate = moveDate(time, i)
+  const startTime = `${startDate.year}-${addZero(startDate.month)}-${addZero(startDate.day)}`;
+  let k = 0;
+  while(k < WEEK_LEN) {
+      const date = moveDate(startTime, 0, k++);
+      const dateStr = `${date.year}-${addZero(date.month)}-${addZero(date.day)}`;
+      lists.push({
+          date: dateStr,
+          year: date.year,
+          month: date.month,
+          day: date.day,
+          task: tasks[dateStr] || [],
+      });
+  }
+  return lists;
+}
+function getDateKey(date: string | Date) {
+  var curDate = new Date(date);
+  const month = curDate.getMonth() + 1;
+  const day = curDate.getDate();
+  return `${curDate.getFullYear()}-${addZero(month)}-${addZero(day)}`;
+}
+/**
+* 根据当前日历日期生产任务数据模型
+* 
+* @param tasksList 
+*/
+function buildDayForTasks(tasksList) {
+  const data = {};
+  if (tasksList && tasksList.length) {
+      tasksList.forEach((item) => {
+          const dateKey = getDateKey(item.startTime);
+          data[dateKey] = data[dateKey] || [];
+          data[dateKey].push(item);
+      });
+      return data;
+  }
+  return data;
+}
 export function getCurDate(date: IDate, right?: number): IDate {
     let { year, month, day } = date;
     let curDayLen = new Date(date.year, date.month, 0).getDate();
@@ -126,5 +176,8 @@ export {
     addZero,
     titlePrefix,
     getNewDate,
-    moveDate
+    moveDate,
+    getDateKey,
+    buildDateBody,
+    buildDayForTasks
 }

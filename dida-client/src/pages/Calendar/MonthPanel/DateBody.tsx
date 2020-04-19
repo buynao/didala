@@ -1,6 +1,6 @@
 import * as React from "react";
 import { TasksLists, TaskItem, DateBodyProps } from "MyTypes";
-import { addZero } from "@util/help";
+import { buildDayForTasks, addZero } from "@util/help";
 import { Scrollbars } from "react-custom-scrollbars";
 
 interface IDateBody {
@@ -94,23 +94,7 @@ const DateBody = (props: DateBodyProps) : JSX.Element => {
 interface DayForTask {
     [index: string]: [] | TaskItem[]
 }
-/**
- * 根据当前日历日期生产任务数据模型
- * 
- * @param tasksList 
- */
-function buildDayForTasks(tasksList: TasksLists) : DayForTask {
-    const data = {};
-    if (tasksList && tasksList.length) {
-        tasksList.forEach((item) => {
-            const dateKey = getDateKey(item.startTime);
-            data[dateKey] = data[dateKey] || [];
-            data[dateKey].push(item);
-        });
-        return data;
-    }
-    return data;
-}
+
 /**
  * 根据任务数据模型生成方便渲染的列表数据结构
  * 
@@ -173,13 +157,6 @@ function buildDateBody(year: number, month: number, tasks: DayForTask) : DateBod
         });
     }
     return lists;
-}
-
-function getDateKey(date: string | Date) {
-    var curDate = new Date(date);
-    const month = curDate.getMonth() + 1;
-    const day = curDate.getDate();
-    return `${curDate.getFullYear()}-${addZero(month)}-${addZero(day)}`;
 }
 
 export default DateBody;
