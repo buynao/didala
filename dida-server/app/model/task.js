@@ -69,6 +69,10 @@ module.exports = app => {
       default: '',
       type: String,
     },
+    isAllDay: {
+      default: true,
+      type: Boolean,
+    },
   });
   // TaskSchema.pre('save', function(next) {
   //   this.startTime = new Date();

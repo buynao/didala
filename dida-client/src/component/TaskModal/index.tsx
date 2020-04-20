@@ -12,12 +12,13 @@ interface IProps extends ITaskMethods {
     callParentCancel: () => void;
     tasks: IGlobalTask;
     curTask: TaskItem;
+    isAllDay?: boolean;
 }
 type typeValue = "content" | "title";
 
 function TaskModal (props: IProps) {
-    const { updateTask, callParentCancel, timeTitle, type, addTask, deleteTask, visible, taskItem } = props;
-    console.log(taskItem);
+    const { updateTask, callParentCancel, timeTitle, type, addTask, deleteTask, visible, taskItem, isAllDay = true } = props;
+
     const [prevTask, setPrevTask] = React.useState({
         content: "",
         title: "",
@@ -46,8 +47,11 @@ function TaskModal (props: IProps) {
                 addTask({
                     title,
                     content,
-                    startTime: timeTitle
+                    startTime: timeTitle,
+                    isAllDay,
                 } as TaskItem);
+
+                // 重置
                 setPrevTask({
                     title: '',
                     content: '',
@@ -55,7 +59,7 @@ function TaskModal (props: IProps) {
             }
         }
         callParentCancel();
-    }, [prevTask]);
+    }, [prevTask, isAllDay]);
 
     const handleDeleteTask = () => {
         deleteTask(_id)

@@ -15,7 +15,7 @@ const WeekContent = function (props: IProps) {
     const { isShowPanel, transition, curDate, tasks } = props;
     const tasksList = buildDayForTasks(tasks.all);
     const renderTasks = buildDateBody(curDate, tasksList);
-    console.log(renderTasks)
+
     return (<CSSTransition
         in={isShowPanel}
         timeout={300}

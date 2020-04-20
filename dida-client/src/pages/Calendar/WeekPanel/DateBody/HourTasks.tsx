@@ -3,27 +3,32 @@ import { IGlobalTask, IDateBody, IDate } from "MyTypes";
 import { addZero } from "@util/help";
 import classNames from "classnames";
 
-const HouTasks = function (props) {
-    const { renderTasks, expand, cellHeight, curShowList, handleAddDate, handleSeletctDate } = props;
+const IS_ALLDAY = false;
 
-    const [selectDate, toggleSelectStatue] = React.useState({ status: false, date: null, top: 0 });
+
+const HouTasks = function (props) {
+    const { renderTasks, isExpand, cellHeight, curShowList, handleAddDate, handleSeletctDate } = props;
+
+    const [ selectDate, changeSelectDate ] = React.useState({ status: false, date: null, top: 0, time: '' });
 
     const handleClickWrapper = function(e: React.FormEvent<HTMLDivElement> | any, date) {
         const Yaxis = e.nativeEvent.layerY;
-        console.log(e.nativeEvent.layerY, date);
-        const top = getHourTop(Yaxis, expand, cellHeight);
-        toggleSelectStatue({
+        const curTopAndTime = getTopAndTime(Yaxis, isExpand, cellHeight);
+
+        changeSelectDate({
+            ...curTopAndTime,
             status: true,
             date,
-            top
         });
+
+        handleAddDate(`${date} ${curTopAndTime.time}`, IS_ALLDAY);
     }
 
     return  <>{
         renderTasks.map((item: any, index) => {
             return <td key={index} className="tg-col ui-droppable">
             {
-                !expand ? <>
+                !isExpand ? <>
                 <div className="cgd-col tg-col cgd-col-first" />
                 <div
                     className="cgd-col tg-col cgd-col-last"
@@ -51,15 +56,28 @@ const HouTasks = function (props) {
         })
     }</>
 }
-function getHourTop (y, expand, cellHeight) {
+
+function getTopAndTime (y: number, isExpand: boolean, cellHeight: number) {
     const unitHeight = cellHeight / 2;
-    const curHeight = (Math.ceil(y / unitHeight) - 1) * unitHeight;
-    console.log(y, unitHeight, Math.ceil(y / unitHeight))
-    return curHeight;
+    const hourLevel = (Math.ceil(y / unitHeight) - 1);
+    const top = hourLevel * unitHeight;
+
+    const curDate = +new Date(`2020/01/01 ${isExpand ? "00:00:00" : "07:00:00"}`);
+    const addMinute = hourLevel * 30 * 60 * 1000;
+    const addDate = new Date(curDate + addMinute);
+    const time = `${addZero(addDate.getHours())}: ${addZero(addDate.getMinutes())}`;
+
+    return {
+        top,
+        time
+    };
 }
 function HourComponent ({cellHeight, tasks, selectDate, date}) {
-
-    if (!selectDate.status || selectDate.date !== date) return null;
+    // 选择标记
+    if (
+        (!selectDate.status || selectDate.date !== date) ||
+        (!selectDate.status && tasks.length === 0)
+    ) return null;
 
     const selectStyle: React.CSSProperties = {
         position: "absolute",
@@ -70,19 +88,32 @@ function HourComponent ({cellHeight, tasks, selectDate, date}) {
         color: "rgba(0, 0, 0, 0.85)",
         top: `${selectDate.top}px`
     };
-
+    const tsk = tasks.filter((item) => !item.isAllDay);
+    console.log(tsk);
     return  <div
         className="c-task none-priority ui-resizable ui-draggable"
         style={{
             ...selectStyle
         }}
     >
-    <div className="c-task-wrapper">
-        <div className="c-task-inner text-tny">
-            <div className="c-task-title">asd</div>
-            <div className="c-task-time">08:00</div>
-        </div>
-    </div>
+        {/* {
+            tsk.map((item) => {
+                return <div className="c-task-wrapper">
+                    <div className="c-task-inner text-tny">
+                        <div className="c-task-title">{item.title}</div>
+                        <div className="c-task-time">{item.startTime}</div>
+                    </div>
+                </div>
+            })
+        } */}
+        {
+            selectDate.status ? <div className="c-task-wrapper">
+            <div className="c-task-inner text-tny">
+                <div className="c-task-title"></div>
+                <div className="c-task-time">{selectDate.time}</div>
+            </div>
+        </div> : null
+        }
 </div>
 }
 

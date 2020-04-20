@@ -14,39 +14,49 @@ interface IProps extends ITaskMethods {
     isShowPanel: boolean;
     dateType: DateType;
 }
-
+interface IContent {
+    type: string;
+    timeTitle: string;
+    taskItem: TaskItem | object;
+    isAllDay: boolean;
+}
+const initContent: IContent = {
+    type: "",
+    timeTitle: "",
+    taskItem: {
+    },
+    isAllDay: true,
+}
 
 /**
  * 日历容器组件
- * 
  */
 const Content = function (props: IProps) {
-    const [state, saveState ] = React.useState({
-        type: "",
-        timeTitle: "",
-        taskItem: {},
-    });
+    const [ state, saveState ] = React.useState<IContent>(initContent);
     const { isShowPanel, selectTask, transition, dateType } = props;
-    const [visible, changeVisible] = React.useState(false);
-    const { type, timeTitle, taskItem } = state;
+    const [ visible, changeVisible] = React.useState(false);
+    const { type, timeTitle, taskItem, isAllDay } = state;
 
     // 选择日期任务 - 进行展示/编辑
-    const handleSeletctDate = (task, timeTitle) => {
+    const handleSeletctDate = (task: TaskItem, timeTitle: string, isAllDay = true) => {
         selectTask(task);
         saveState({
             taskItem: task,
             type: "edit",
             timeTitle,
+            isAllDay
         });
         changeVisible(true);
     };
 
     // 新建空白任务 - 进行展示/编辑
-    const handleAddDate = (timeTitle) => {
+    const handleAddDate = (timeTitle: string, isAllDay = true) => {
         saveState({
-            taskItem: {},
+            taskItem: {
+            },
             type: "add",
             timeTitle,
+            isAllDay
         });
         changeVisible(true);
     };
@@ -79,6 +89,7 @@ const Content = function (props: IProps) {
             </div>
         </div>
         <TaskModal
+            isAllDay={isAllDay}
             timeTitle={timeTitle}
             visible={visible}
             taskItem={taskItem as TaskItem}

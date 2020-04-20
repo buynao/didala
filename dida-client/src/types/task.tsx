@@ -9,6 +9,7 @@ declare module 'MyTypes' {
         name: string;
         _id: string;
         status: number;
+        isAllDay?: boolean;
     }
 
     export type TasksLists  = TaskItem[];
@@ -51,8 +52,8 @@ declare module 'MyTypes' {
     export interface DateBodyProps {
         curDate: IDate;
         tasks: IGlobalTask;
-        handleAddDate: any;
-        handleSeletctDate: any;
+        handleAddDate: (timeTitle: string, isAllDay?: boolean) => void;
+        handleSeletctDate: (task: TaskItem, timeTitle: string, isAllDay?: boolean) => void;
     }
     export interface IDateBody {
         date: string;

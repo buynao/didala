@@ -10,7 +10,8 @@ const taskSchema = {
     deleteCount: 0, // 是否删除过
     etag: "",
     name: "test",
-    color: null
+    color: null,
+    isAllDay: true,
 }
 function genID() {
     return 'xxxxxxxxyxxx'.replace(/[xy]/g, function(c) {
