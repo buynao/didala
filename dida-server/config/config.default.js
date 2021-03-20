@@ -14,7 +14,9 @@ module.exports = appInfo => {
 
   // use for cookie sign key, should change to your own and keep security
   config.keys = appInfo.name + '_1569741843741_7949';
-
+  config.logger = {
+    dir: '/didala/dida-server/logs',
+  };
   // add your middleware config here
   config.middleware = [];
   // 跨域
@@ -22,7 +24,7 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-    domainWhiteList: [ 'http://localhost:1026', 'http://localhost:3003' ],
+    domainWhiteList: [ 'http://localhost:1026', 'http://localhost:3003', 'https://cv.linkmed.cn' ],
   };
 
   config.cors = {
@@ -53,5 +55,8 @@ module.exports = appInfo => {
   return {
     ...config,
     ...userConfig,
+    logger: {
+      dir: '/didala/dida-server/logs',
+    },
   };
 };
