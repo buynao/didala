@@ -10,7 +10,7 @@ module.exports = app => {
   router.post('/api/login', user.login); // 登录
   router.get('/api/checkLogin', user.checkLogin); // 检查登录态
   router.get('/api/logout', user.logout); // 退出登录
-s
+
   router.post('/', controller.iep.addUser); // iep的信息
 
   router.post('/api/v1/batch/task', controller.task.batch); // 任务增加
