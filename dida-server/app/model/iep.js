@@ -19,5 +19,5 @@ module.exports = app => {
     this.dateTime = new Date();
     next();
   });
-  return mongoose.model('iEP', iepSchema);
+  return mongoose.model('Iep', iepSchema);
 };
