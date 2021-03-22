@@ -7,7 +7,7 @@ class IepController extends Controller {
     const { ctx } = this;
     const query = ctx.query;
     ctx.logger.info('中转页地址', query);
-    ctx.redirect('https://www.douyu.com');
+    ctx.redirect(query.refer);
   }
   async addUser() {
     const { ctx } = this;
