@@ -5,7 +5,7 @@ const { Service } = require('egg');
 
 class IEPService extends Service {
   async findUser(userData) {
-    const user = await this.ctx.model.IEP.find({ unionId: userData.unionId });
+    const user = await this.ctx.model.iEP.find({ unionId: userData.unionId });
     return user;
   }
   async addUser(data = {}) {

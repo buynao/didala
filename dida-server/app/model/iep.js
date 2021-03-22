@@ -2,7 +2,7 @@
 
 module.exports = app => {
   const mongoose = app.mongoose;
-  const UserSchema = new mongoose.Schema({
+  const iepSchema = new mongoose.Schema({
     trueName: { type: String, default: '姓名' },
     phone: { type: String, default: '110' },
     email: { type: String, default: '301' },
@@ -19,5 +19,5 @@ module.exports = app => {
     this.dateTime = new Date();
     next();
   });
-  return mongoose.model('IEP', UserSchema);
+  return mongoose.model('iEP', iepSchema);
 };
