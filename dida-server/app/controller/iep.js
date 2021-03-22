@@ -5,11 +5,9 @@ const Controller = require('egg').Controller;
 class IepController extends Controller {
   async showPage() {
     const { ctx } = this;
-    const userData = ctx.query;
-    console.log(userData);
-    if (ctx.method === 'GET') {
-      ctx.redirect('www.baidu.com')
-    }
+    const query = ctx.query;
+    ctx.logger.info('中转页地址', query);
+    ctx.redirect(query.refer);
   }
   async addUser() {
     const { ctx } = this;
