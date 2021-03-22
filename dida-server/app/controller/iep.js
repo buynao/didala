@@ -7,7 +7,12 @@ class IepController extends Controller {
   async addUser() {
     const { ctx } = this;
     const data = ctx.request.body;
-    ctx.body = await ctx.service.iep.add(data);
+    await ctx.service.iep.add(data);
+    ctx.body = {
+      code: 200,
+      msg: 'success',
+      data: data
+    };
   }
 }
 
