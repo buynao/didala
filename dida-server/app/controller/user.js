@@ -49,7 +49,11 @@ class UserController extends Controller {
     const user = ctx.session.user;
     const userData = ctx.method === 'GET' ? ctx.query : ctx.request.body;
     ctx.logger.info('iep:', userData)
-    ctx.body = userData;
+    if (ctx.method === 'GET') {
+      ctx.redirect('www.baidu.com')
+    } else {
+      ctx.body = userData;
+    }
   }
   async logout() {
     const { ctx } = this;
