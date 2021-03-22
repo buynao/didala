@@ -24,7 +24,7 @@ module.exports = appInfo => {
     csrf: {
       enable: false,
     },
-    domainWhiteList: [ 'http://localhost:1026', 'http://localhost:3003', 'https://cv.linkmed.cn','.baidu.com','.weizan.com','.douyu.com'],
+    domainWhiteList: [ 'http://localhost:1026', 'http://localhost:3003', 'https://cv.linkmed.cn','.baidu.com','.vzan.com','.douyu.com'],
   };
 
   config.cors = {
