@@ -15,7 +15,7 @@ module.exports = app => {
     refer: { type: String, default: '' },
     dateTime: { type: Date },
   });
-  UserSchema.pre('save', function(next) {
+  iepSchema.pre('save', function(next) {
     this.dateTime = new Date();
     next();
   });
