@@ -9,6 +9,7 @@ module.exports = app => {
   router.post('/api/register', user.register); // 注册
   router.post('/api/login', user.login); // 登录
   router.get('/api/checkLogin', user.checkLogin); // 检查登录态
+  router.post('/api/checkLogin', user.checkLogin); // 检查登录态
   router.get('/api/logout', user.logout); // 退出登录
 
   router.post('/', controller.iep.addUser); // iep的信息

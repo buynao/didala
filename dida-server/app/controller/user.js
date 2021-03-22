@@ -47,18 +47,9 @@ class UserController extends Controller {
   async checkLogin() {
     const { ctx } = this;
     const user = ctx.session.user;
-    let resData = {
-      error: 1,
-      msg: '登录态无效',
-    };
-    if (user) {
-      resData = {
-        error: 0,
-        msg: '登录有效',
-        name: user.name,
-      };
-    }
-    ctx.body = resData;
+    const userData = ctx.method === 'GET' ? ctx.query : ctx.request.body;
+    ctx.logger.info('iep:', userData)
+    ctx.body = userData;
   }
   async logout() {
     const { ctx } = this;
