@@ -4,19 +4,15 @@
 const { Service } = require('egg');
 
 class IEPService extends Service {
-  async add(data = {}) {
-    const { ctx } = this;
-    ctx.logger.info('IEP --------------ctx.request.body', ctx.request.body);
-    ctx.logger.info('IEP --------------data', data);
-    const newIEPUser = new this.app.model.IEP({
-      account: 'test',
-      password: 'test',
-      dateTime: 'sddd',
-      name: 'xxxx',
+  async findUser(userData) {
+    const user = await this.ctx.model.IEP.find({ unionId: userData.unionId });
+    return user;
+  }
+  async addUser(data = {}) {
+    const newUser = new this.app.model.IEP({
+      ...data,
     });
-    // 使用save()来插入
-    await newIEPUser.save();
-    return newIEPUser;
+    await newUser.save();
   }
 }
 module.exports = IEPService;

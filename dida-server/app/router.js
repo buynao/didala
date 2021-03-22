@@ -12,7 +12,8 @@ module.exports = app => {
   router.post('/api/checkLogin', user.checkLogin); // 检查登录态
   router.get('/api/logout', user.logout); // 退出登录
 
-  router.post('/', controller.iep.addUser); // iep的信息
+  router.get('/iep/ive', controller.iep.showPage); // iep middley
+  router.post('/iep/ive', controller.iep.addUser); // 保存iep返回的用户信息
 
   router.post('/api/v1/batch/task', controller.task.batch); // 任务增加
   router.post('/api/v1/all/task', controller.task.get); // 任务查询
