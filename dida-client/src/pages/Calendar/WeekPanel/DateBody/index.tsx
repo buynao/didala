@@ -24,10 +24,10 @@ const DateBody = (props: WeekDBProps) : JSX.Element => {
     const [cellHeight, changeCellHeight] = React.useState(CELL_HEIGHT);
     const [isExpand, toggleExpand] = React.useState(EXPAND_INIT_STATUS);
     const [curShowList, changeList] = React.useState(genHourList(isExpand));
-
+    console.log(curShowList);
     const toggleHourLabel = (expandStatus: boolean) => {
-        toggleExpand(expandStatus)
-        changeList(genHourList(expandStatus))
+        toggleExpand(!isExpand)
+        changeList(genHourList(!isExpand))
     }
 
     const mainCls = classNames('tg-mainwrapper', {

@@ -6,12 +6,12 @@ import { Tooltip } from 'antd';
 
 
 const HourLabel = function (props) {
-    const { curShowList, cellHeight, expand, toggleHourLabel } = props;
+    const { curShowList, cellHeight, isExpand, toggleHourLabel } = props;
 
     return <td className="tg-times-pri">
         <div className="tg-times-pri-wrapper">
             <Forenoon
-                expand={expand}
+                isExpand={isExpand}
                 cellHeight={cellHeight}
                 toggleHourLabel={toggleHourLabel}
             />
@@ -23,7 +23,7 @@ const HourLabel = function (props) {
                 })
             }
             <Afternoon
-                expand={expand}
+                isExpand={isExpand}
                 cellHeight={cellHeight}
                 toggleHourLabel={toggleHourLabel}
             />
@@ -31,14 +31,14 @@ const HourLabel = function (props) {
     </td>
 }
 
-const Forenoon = function ({ expand, cellHeight, toggleHourLabel }) {
-    return expand ?
+const Forenoon = function ({ isExpand, cellHeight, toggleHourLabel }) {
+    return isExpand ?
     <ShowForenoon cellHeight={cellHeight} toggleHourLabel={toggleHourLabel }/>
     : <HideForenoon cellHeight={cellHeight} toggleHourLabel={toggleHourLabel }/>
 }
 
-const Afternoon = function({ expand, cellHeight, toggleHourLabel }) {
-    return expand ?
+const Afternoon = function({ isExpand, cellHeight, toggleHourLabel }) {
+    return isExpand ?
     <ShowAfternoon cellHeight={cellHeight} toggleHourLabel={toggleHourLabel }/>
     : <HideAfternoon cellHeight={cellHeight} toggleHourLabel={toggleHourLabel }/>
 }

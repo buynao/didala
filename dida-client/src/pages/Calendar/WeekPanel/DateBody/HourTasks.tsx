@@ -1,7 +1,5 @@
 import * as React from "react";
-import { IGlobalTask, IDateBody, IDate } from "MyTypes";
 import { addZero } from "@util/help";
-import classNames from "classnames";
 
 const IS_ALLDAY = false;
 
@@ -40,7 +38,7 @@ const HouTasks = function (props) {
                 className="tg-col-eventwrapper"
                 onClick={(e) => handleClickWrapper(e, item.date)}
                 style={{
-                    height:  `${ cellHeight * (curShowList.length + 1) }px`
+                    height:  `${ isExpand ? cellHeight * (curShowList.length) : cellHeight * (curShowList.length + 1)}px`
                 }}
             >
                 <div className="tg-gutter">

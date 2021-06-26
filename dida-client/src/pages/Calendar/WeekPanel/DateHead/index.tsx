@@ -15,10 +15,27 @@ interface DateHeadProps extends DateBodyProps {
  */
 const DateHead: React.FC<DateHeadProps> = React.memo((props) => {
     const { handleAddDate, handleSeletctDate, renderTasks } = props;
+    const [ curHeight, moveHeight ] = React.useState(60);
+    const moveFlag = React.useRef(null);
+    const head = React.useRef(null);
+
+    const moveDown = (e) => {
+        const y = e.clientY - parseInt(head.current.style.height);
+        document.onmousemove = function(event) {
+            event.preventDefault()
+            head.current.style.height = event.clientY - y + 'px';
+        }
+        document.onmouseup = function() {
+            moveHeight(head.current.style.height);
+            // 多次点击会注册多次事件造成内存泄漏
+            document.onmousemove = null;
+            document.onmouseup = null;
+        }
+    }
 
     return <>
     <WeekHead renderTasks={renderTasks} />
-    <div className="wk-allday">
+    <div className="wk-allday" ref={head} style={{ height: curHeight }}>
         <div className="tg-time-all" />
         <div className="tg-allday-wrapper">
             <div className="tg-allday">
@@ -38,8 +55,12 @@ const DateHead: React.FC<DateHeadProps> = React.memo((props) => {
                 </div>
             </div>
         </div>
-        <div className="dragArea">
-            <div className="dragger" />
+        <div className="dragArea" >
+            <div
+                ref={moveFlag}
+                className="dragger"
+                onMouseDown={moveDown}
+            />
         </div>
     </div>
     </>;

@@ -27,8 +27,7 @@ action$.pipe(
 export const loginEpic: RootEpic = (
     action$, store$,
     { account }
-) =>
-action$.pipe(
+) => action$.pipe(
     filter(isActionOf(logInAsync.request)),
     switchMap((data) => fromPromise(account.logIn(data.payload)).pipe(
             map((data: IAccountState) => logInAsync.success(data)),
@@ -44,8 +43,7 @@ action$.pipe(
 export const loginOutEpic: RootEpic = (
     action$, store$,
     { account }
-) =>
-action$.pipe(
+) => action$.pipe(
     filter(isActionOf(logOutAsync.request)),
     switchMap(() => fromPromise(account.logOut()).pipe(
             map(() => logOutAsync.success(accountActions.accountInitData)),

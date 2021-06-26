@@ -1,7 +1,7 @@
 {
   "name": "dida-client",
-  "version": "1.1.1",
-  "description": "一款基于 TS + React + Hooks + RxJs + Antd + Redux-Observable 实现的 仿滴答清单的前端应用 ",
+  "version": "1.1.0",
+  "description": "基于 TS + React + Hooks + RxJs + Antd + Redux-Observable 实现的 仿滴答清单的前端应用 ",
   "title": "dida",
   "main": "index.js",
   "author": "刘富龙",
