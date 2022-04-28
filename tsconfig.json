@@ -1,0 +1,35 @@
+{
+  "compilerOptions": {
+      "outDir": "./dist/",
+      "sourceMap": true,
+      "noImplicitAny": false,
+      "module": "commonjs",
+      "target": "es6",
+      "jsx": "react",
+      "allowJs": false,
+      "noEmit": true,
+      "allowSyntheticDefaultImports": true,
+      // "module": "ESNext",
+      "moduleResolution": "node",
+      "baseUrl": ".",
+      "paths": {
+        "@/*": ["./src/*"],
+        "@actions/*": ["./src/actions/*"],
+        "@comp/*": ["./src/component/*"],
+        "@epics/*": ["./src/epics/*"],
+        "@imgs/*": ["./src/imgs/*"],
+        "@operator/*": ["./src/operator/*"],
+        "@pages/*": ["./src/pages/*"],
+        "@reducers/*": ["./src/reducers/*"],
+        "@router/*": ["./src/router/*"],
+        "@icons": ["./src/component/Icon"],
+        "@TYPES/*": ["./src/types/*"],
+        "@util/*": ["./src/util/*"],
+        "@services/*": ["./src/services/*"],
+      }
+  },
+  "exclude": [
+      "node_modules",
+      "**/*.spec.ts"
+  ]
+}

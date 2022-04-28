@@ -10,6 +10,9 @@
     "start": "cross-env NODE_ENV=dev webpack-dev-server --mode development --progress --open --colors --hot --port 1026 --content-base dist",
     "debug": "cross-env NODE_ENV=debug webpack -w --config ./webpack.config.js"
   },
+  "engines": {
+    "node": ">=10.22.4"
+  },
   "license": "ISC",
   "dependencies": {
     "@types/history": "^4.7.5",
