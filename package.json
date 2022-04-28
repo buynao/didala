@@ -13,7 +13,7 @@
   "license": "ISC",
   "dependencies": {
     "antd": "^4.20.1",
-    "axios": "^0.19.2",
+    "axios": "^0.21.2",
     "classnames": "^2.2.6",
     "core-js": "^3.6.4",
     "react": "^17.0.0",
