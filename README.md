@@ -6,7 +6,7 @@
 
 <img src="https://buynao.oss-cn-beijing.aliyuncs.com/20200406_193852.gif"/>
 
-[http://dida.buynao.com](http://dida.buynao.com)
+[https://didala.vercel.app/](https://didala.vercel.app/)
 
 ### 本地运行
 
@@ -25,8 +25,8 @@ npm run start
 
 - [x] ToDoList
 - [x] 游客模式 - 本地存储
-- [x] 注册模式 - 远程存储
-- [x] jenkins - 自动化部署 [http://jenkins.buynao.com](http://jenkins.buynao.com)
+- [x] ~~注册模式 - 远程存储~~
+- [x] ~~jenkins - 自动化部署 [http://jenkins.buynao.com](http://jenkins.buynao.com)~~
 - [x] 日历模式 - 月
 - [x] 日历模式 - 周
 - [ ] 日历模式 - 日
